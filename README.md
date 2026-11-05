@@ -9,8 +9,8 @@ Ubuntu, then publishes to GHCR using the repository's built-in `GITHUB_TOKEN`:
 - `ghcr.io/xoxno/actions-runner:latest`
 - `ghcr.io/xoxno/actions-runner:sha-<full-commit-sha>`
 
-Pull requests build and test without publishing. Manual runs publish only from
-`main`. No registry password or personal access token is needed for publishing.
+Only pushes and manual runs on `main` build and publish. No registry password or
+personal access token is needed for publishing.
 
 ## Coolify
 
@@ -21,7 +21,7 @@ default to private even when their source repository is public.
 In **Server > GitHub Runners**, set **Runner image** to
 `ghcr.io/xoxno/actions-runner:latest`, keep the `xoxno` custom label, and retain
 **Isolated Docker (Sysbox)**. New jobs use the new image. For an explicit rollout,
-select the immutable `sha-...` tag instead.
+select the commit-specific `sha-...` tag instead.
 
 The image includes `build-essential` (make, GCC, G++, libc headers), pkg-config,
 OpenSSL development headers, Python with venv support, and common CI utilities.
