@@ -46,9 +46,11 @@ jobs:
           docker run --rm --entrypoint bash "$IMAGE:sha-$GITHUB_SHA" -euc '
             test "$(id -un)" = runner
             test -x /home/runner/run.sh
-            for tool in make cc c++ git curl jq pkg-config python3 xxd zstd; do
+            for tool in make cc c++ git curl jq pkg-config python3 xxd zstd perl rustup cargo elan lake; do
               command -v "$tool"
             done
+            rustup --version
+            elan --version
             printf "int main(void) { return 0; }\n" | cc -x c - -o /tmp/runner-smoke
             /tmp/runner-smoke
             python3 -m venv /tmp/runner-venv

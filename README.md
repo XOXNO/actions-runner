@@ -24,9 +24,11 @@ In **Server > GitHub Runners**, set **Runner image** to
 select the commit-specific `sha-...` tag instead.
 
 The image includes `build-essential` (make, GCC, G++, libc headers), pkg-config,
-OpenSSL development headers, Python with venv support, and common CI utilities.
-Workflows still select/install Rust, Node, Java, Stellar CLI, and other
-job-specific tools. Local Certora prover bundles are not included; workflows
+OpenSSL development headers, Python with venv support, common CI utilities, and
+the toolchain managers `rustup` and `elan` (SHA-256 pinned, no default toolchain).
+Workflows still select their Rust and Lean toolchains (`rust-toolchain.toml`,
+`lean-toolchain`) and install Node, Java, Stellar CLI, and other job-specific
+tools. Local Certora prover bundles are not included; workflows
 that expect a pre-existing `$HOME/certora-install` need explicit provisioning.
 
 ## Maintenance
